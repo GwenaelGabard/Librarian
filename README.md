@@ -21,4 +21,5 @@ which should return the best documents you have on your shelves about magical pe
 For what it's worth: the Librarian is an orangutan. When he says 'ook' he generally means yes and 'eek' generally means no.
 
 † This might be obvious to most, but the magicians of the Unseen University are not known for their good grasp of pratical matters, so the Librarian has found it best to spell things out clearly when explaining even the simplest things.
+
 †† Technically the register is stored in the Librarian's head, but let's not go there.
