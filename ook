@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+
+""" This script gets a list of keywords from the user, loads the register
+and then use the register to get marks for all the documents. We then
+print the 5 best documents. 
+"""
+
+import sys
+import argparse
+from librarian import Register, read_config_file
+
+
+def main(args=None):
+    P = argparse.ArgumentParser(description=__doc__)
+    P.add_argument("keywords", type=str, default=None, nargs="+", help="Keywords.")
+    A = P.parse_args(args=args)
+
+    config = read_config_file()
+
+    register = Register(config["shelves"], config["register"])
+    if register.exists():
+        register.read()
+    else:
+        print("No register available! Please first use ook-update to create the register.")
+        return(1)
+
+    files = register.rank_documents(A.keywords)
+
+    print('\nResults:')
+    for file in files:
+        print('  {0[1]:4.0%}: {0[0]}'.format(file))
+
+    return(0) # It always works, right!?
+
+
+if __name__ == '__main__': sys.exit(main())

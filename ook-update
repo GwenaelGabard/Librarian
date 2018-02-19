@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+""" This script load the register and tell it to update, meaning
+to scan the shelf for new or midified documents.
+"""
+
+import sys
+from librarian import Register, read_config_file
+
+
+def main(args=None):
+    config = read_config_file()
+
+    register = Register(config["shelves"], config["register"])
+    register.read()
+    register.update()
+    register.write()
+
+    return 0
+
+
+if __name__ == '__main__': sys.exit(main())
